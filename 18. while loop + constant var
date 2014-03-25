@@ -1,0 +1,45 @@
+/* prog18.c: This programme is a loop with a constant variable.[].
+
+ * Last Modified: 16/11/2012
+ ***/
+/* motivation to create secret word
+ * [no] alternative**/
+/* outputs [as] expected*/
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+
+int main(void)
+
+{
+/*declare the string-count*/
+	
+	char guess[10];
+	const char SECRET[] = "blah";
+	
+while (strcmp(guess, SECRET)!= 0)
+{
+	printf("Guess the secret word: \n");
+	scanf ("%9s", guess);
+	
+/*while-loop indicates letter count
+ *intro + body + conclusion**/
+
+if (strcmp(guess, SECRET) == 0) 
+{	
+	printf("Correct guess - well done!\n");
+}	
+else 
+{
+printf("Sorry, %s is not the secret word.\n", guess);
+}
+
+/*tutor added this: why?*/
+/*while( getchar()!='\n' );*/
+
+}	
+	return 0;
+
+}
