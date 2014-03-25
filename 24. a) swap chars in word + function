@@ -1,0 +1,51 @@
+/* prog24.c: This programme reverses each word in a sentence.[].
+
+ * Last Modified: 18/11/2012
+ ***/
+/* motivation to learn to manipulate arrays in memory
+/* outputs as expected*/
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+void swap_characters_in_word (char *word, int l);
+
+const int SENTENCE_LENGTH=100;
+
+int main(void)
+{
+	char sentence[SENTENCE_LENGTH], word[30];	
+	int i, l;									
+	
+	printf("Please, enter a sentence: ");
+	fgets(sentence, SENTENCE_LENGTH, stdin);	
+	
+	for (i = 0; i <= strlen(sentence); i = i+1)
+	{
+
+	l = 0;
+	
+	while ((sentence[i] != ' ') && (sentence[i] != '\n') && (i <= strlen(sentence)))
+		{
+			word[l] = sentence[i];
+			l = l+1;
+			i = i+1;
+		}
+
+		l = l-1;
+
+		swap_characters_in_word ();
+		
+	}
+	
+	return 0;
+}
+
+void swap_characters_in_word (char *word, int l)
+{
+	for ( ; l >= 0; l = l-1)				
+		printf("%c", word[l]);
+	printf(" ");								
+
+}
