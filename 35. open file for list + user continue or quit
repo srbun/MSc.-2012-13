@@ -1,0 +1,50 @@
+/* prog35.c: This programme opens a file to list 20 items and wait for user to continue another 20 or to quit.[].
+
+ * Last Modified: 14/12/2012
+ ***/
+/* motivation to loop and pause for user's command
+ * no alternative**/
+/* outputs as expected:
+*/
+
+/* extra libraries included*/
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+int main(void)
+{
+//declare file + word-list + quit char + line-counter int
+	FILE *fp;
+	char listword[100], quit = '\0';
+	int linecount;
+
+	fp = fopen("list.txt", "r");
+
+	if(fp == NULL)
+	{
+		printf("Error: no file by this name; try again.\n");
+		exit(1);
+	}
+	else
+	{
+//conditions = not EOF or quit	
+		while(linecount != EOF && quit != 'q')
+		{
+//start int at 0; loop until 20; add 1 to int		
+            for(linecount = 0; linecount <20; linecount++)
+            {
+//get the word from file + print each for loop to 20			
+                fgets (listword, 100, fp);
+                printf("\n%s", listword);
+            }
+//prompt user for direction + take that from 'quit' address			
+            printf("\nPlease, hit ENTER to continue or Q to exit.\n");
+            scanf ("%c", &quit);
+		}
+	}
+
+ 	fclose ( fp );
+	return 0;
+}
