@@ -1,0 +1,46 @@
+/* prog21.c: This programme reverses each word in a sentence.[].
+
+ * Last Modified: 18/11/2012
+ ***/
+/* motivation to learn to manipulate arrays in memory
+ * alternative included below**/
+/* outputs as expected*/
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+/*constant int length = 100
+**/
+const int SENTENCE_LENGTH=100;
+
+int main(void)
+{
+/*declare the list: char + int*/
+	char sentence[SENTENCE_LENGTH], word[30];	/*char value defined as const int + another char = word*/
+	int i, l;									/*int defined as i=int + l=letter*/
+	
+	printf("Please, enter a sentence: ");
+	fgets(sentence, SENTENCE_LENGTH, stdin);	/*fgets replaces scanf and retrieves rule from stdin in stdio.h library*/	
+	
+	for (i = 0; i <= strlen(sentence); i = i+1)	/*for here starts i = 0 / i int  <= sentence length / i builds by 1*/
+	{
+/*initialize l with 0 because it counts the letters in an individual word*/
+	l = 0;
+/*identify each word in the phrase and write it in word array*/
+		while ((sentence[i] != ' ') && (sentence[i] != '\n') && (i <= strlen(sentence)))
+		{
+		word[l] = sentence[i];
+		l = l+1;
+		i = i+1;
+		}
+/*print the word in the while loop in reverse order*/
+	l = l-1;
+
+	for ( ; l >= 0; l = l-1)					/*reverse order*/
+		printf("%c", word[l]);
+		printf(" ");								    /*because spaces are not considered in while loop, they need to be added too*/
+	}
+	
+	return 0;
+}
