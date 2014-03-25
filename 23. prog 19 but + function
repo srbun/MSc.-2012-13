@@ -1,0 +1,60 @@
+/* prog23.c: This programme repeats 19 but with a function.[].
+
+ * Last Modified: 17/11/2012
+ ***/
+/* motivation to create secret word within 3 guesses
+ * no alternative known**/
+/* outputs as expected: 
+ * repeated prog19 w/function -2 extra lines of code, fewer scanf.s**/
+
+/* extra libraries included*/ 
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+void get_user_input(char *guess);
+
+int main(void)
+
+{
+/*declare the string-chars & count*/
+	
+	char guess[10];
+	const char SECRET[] = "blah";
+	int count;
+
+/*for-loop is tricky here: 
+ *2 conditions = count + strcmp must not equal 0 to be true**/
+/* strcmp was in (), but should not be -other than variables*/
+	
+for (count = 1; count <= 3 && strcmp(guess, SECRET) != 0; count = count+1)
+
+/*while (strcmp(guess, SECRET)!= 0)*/ 
+{
+	get_user_input(guess);
+	/*printf("\nGuess the secret word within three attempts: \n\n");*/
+	/*scanf ("%9s", guess);*/
+
+/* print can be included on if line w/o curlies, 
+ * but this way is more consistent**/	
+
+	if (strcmp(guess, SECRET) == 0) 
+{	
+	printf("\nCorrect guess - %s is the secret word.\n", SECRET);
+}
+/*	count = 0;*/
+	
+	else
+{
+	printf("\nSorry, %s is not the secret word.\n", guess);
+}
+}	
+	return 0;
+}
+
+void get_user_input(char *guess)
+{
+	printf("\nGuess the secret word within three attempts: \n\n");
+	scanf ("%9s", guess);
+}
