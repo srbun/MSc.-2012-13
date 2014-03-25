@@ -17,7 +17,7 @@ int main(void)
 {
 
 	char sentence[SENTENCE_LENGTH], word[30];	/*char value defined as const int + another char = word*/
-	int i, l;									/*int defined as i=int + l=letter*/
+	int i, l;					/*int defined as i=int + l=letter*/
 	int s, e;
 	
 	printf("Please, enter a sentence: ");
@@ -40,10 +40,11 @@ int main(void)
 
 		l = l-1;
 		s = i+1;
-	for ( ; l >= 0; l = l-1)					/*reverse order*/
-		printf("%c", word[l]);
-		printf(" ");								/*because spaces are not considered in while loop, they need to be added too*/
+		for ( ; l >= 0; l = l-1)		/*reverse order*/
+		{
+			printf("%c", word[l]);
+			printf(" ");			/*because spaces are not considered in while loop, they need to be added too*/
+		}
 	}
-	
 	return 0;
 }
