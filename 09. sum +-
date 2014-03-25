@@ -1,0 +1,16 @@
+#include <stdio.h>
+int main(void)
+
+{
+	int numbers[4];
+	printf("Enter number one:\n");
+	scanf ("%9d", &numbers[0]);
+	printf("Enter number two:\n");
+	scanf ("%9d", &numbers[1]);
+	numbers [2] = numbers [0] + numbers[1];
+	numbers [3] = numbers [0] - numbers[1];
+	printf("Sum is: %9d\n", numbers[2]);
+	printf("Sum is: %9d\n", numbers[3]);
+	return 0;
+	
+}
