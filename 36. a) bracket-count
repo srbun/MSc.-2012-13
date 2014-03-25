@@ -1,0 +1,99 @@
+/* prog36.c: This programme counts the number of each type of bracket -[](){}- & alerts if uneven.[].
+
+ * Last Modified: 17/12/2012
+ ***/
+/* motivation to count individual chars & alert if uneven
+ * switch statements could be used as an alternative**/
+/* outputs as expected:
+*/
+
+/* extra libraries included*/
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+int main(int argc, char *argv[])
+{
+	FILE *fp;
+	char filename[40];
+	char c;
+	char ob='[';
+	char cb=']';
+	char op='(';
+	char cp=')';
+	char oc='{';
+	char cc='}';
+	int obi=0;
+	int cbi=0;
+	int opi=0;
+	int cpi=0;
+	int oci=0;
+	int cci=0;
+	
+	printf("Enter file name: ");
+	fgets(filename, 40, stdin);
+	fp = fopen("brackets.c", "r"); /* open for reading */
+
+	if (fp == NULL)	//check does file exist etc
+	{
+		printf("Cannot open %s for reading.\n", filename);
+		exit(1);	//terminate program
+	}
+	
+	c = getc(fp);	/* Read 1st character if any */
+	while(c != EOF)
+	{
+		if(c==ob)
+		{
+		printf("%c", c);
+		obi++;
+		}
+		
+		if(c==cb)
+		{
+		printf("%c", c);
+		cbi++;
+		}
+		
+		if(c==op)
+		{
+		printf("%c", c);
+		opi++;
+		}
+		
+		if(c==cp)
+		{
+		printf("%c", c);
+		cpi++;
+		}
+		
+		if(c==oc)
+		{
+		printf("%c", c);
+		oci++;
+		}
+		
+		if(c==cc)
+		{
+		printf("%c", c);
+		cci++;
+		}
+		c=getc(fp);
+	}
+	printf("\nThere are %d open brackets.\n", obi);
+	printf("There are %d closed brackets.\n", cbi);
+	if(obi != cbi)
+		printf("(There are unmatched brackets.)\n");
+	printf("\nThere are %d open parentheses.\n", opi);
+	printf("There are %d closed parentheses.\n", cpi);
+	if(opi != cpi)
+		printf("(There are unmatched parentheses.)\n");
+	printf("\nThere are %d open curlies.\n", oci);
+	printf("There are %d closed curlies.\n", cci);
+	if(oci != cci)
+		printf("\n(There are unmatched curlies.)\n");
+	
+
+return 0;
+	}
