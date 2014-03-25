@@ -1,8 +1,8 @@
 /* prog14.c: This programme subtracts 2 from unsigned 1.
- * Authors: Andrew Cameron (Andrew Lamb, Colm Brennan + tutor-help)
+
  * Last Modified: 14/11/2012
  ***/
-/* motivation was to find the next int in shortest way; an alternative (A.Lamb) = unsigned int t = 1 / printf("%u\n", t) / unsigned int t = -2 / <same printf>*/
+/* motivation was to find the next int in shortest way; an alternative (xxxx) = unsigned int t = 1 / printf("%u\n", t) / unsigned int t = -2 / <same printf>*/
 /* outputs as expected: question implied answer would not be -1; ergo, last number in unsigned range of numbers*/
 
 #include <stdio.h>
