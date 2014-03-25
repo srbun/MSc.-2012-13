@@ -1,0 +1,39 @@
+#include <stdio.h>
+int main(void)
+{
+	int size_of_int = sizeof(int);
+	printf ("int: %d\n", size_of_int);
+	
+	
+	char colour= 'a';
+	printf("char: %d\n", sizeof(colour));
+	
+	
+	float size_of_float;
+	printf("float: %d\n", sizeof(size_of_float) );
+	
+	
+	double size_of_double;
+	printf("double: %d\n", sizeof(size_of_double) );
+	
+	int array_int[3];
+	printf ("array_int: %d\n", sizeof (array_int)); 
+	char array_char[4];
+	printf ("array_char: %d\n", sizeof (array_char));
+	float array_float[5];
+	array_float[0]=1.0;
+	array_float[1]=2.0;
+	array_float[2]=3.0;
+	array_float[3]=4.0;
+	array_float[4]=0.0;
+	printf ("array_float: %d\n", sizeof (array_float));
+	double array_double[6];
+	array_double[0]=1.0;
+	array_double[1]=2.0;
+	array_double[2]=3.0;
+	array_double[3]=4.0;
+	array_double[4]=5.0;
+	array_double[5]=0.0;
+	printf ("array_double: %d\n", sizeof (array_double));
+	return 0;
+}
