@@ -1,0 +1,61 @@
+/* prog32.c: This programme copies a file into a new one it creates.[].
+
+ * Last Modified: 05/12/2012
+ ***/
+/* motivation to copy a file into a new one
+ * no alternative**/
+/* outputs as expected: 
+*/
+
+/* extra libraries included*/ 
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+int main(void)
+
+{
+//declare 2 files -to read + to write / 2 char arrays / int
+	FILE *fp1, *fp2;
+	char fname1[40], fname2[40];
+	int c;
+//prompt user for read-file / get it
+	printf("Enter source file:");
+	fgets (fname1, 40, stdin);
+//prompt user for write-file / get it (create it)	
+	printf("Enter destination file:");
+	fgets (fname2, 40, stdin);
+//open both files	
+	fp1 = fopen("prog32in.txt", "r");
+	fp2 = fopen("prog32out.txt", "w");
+//if file-1 missing
+	if(fp1 == NULL)
+	{
+		printf("Unable to open file to read.\n");
+		exit(1);
+	}
+//if file-2 missing
+	else if(fp2 == NULL)
+	{
+		printf("Unable to open file to write.\n");
+		exit(1);
+	}
+//if neither file missing -get file-1 content (array)
+	else
+	{
+		c = getc(fp1);
+//until EOF -put content/array char #1 into file-2 / get next char
+		while(c != EOF)
+		{
+			putc(c, fp2);
+			c = getc(fp1);
+		}
+//verify copy
+		printf("Now, check your files.\n");	
+//close files
+	fclose(fp1);
+	fclose(fp2);
+	}
+	return 0;
+}
