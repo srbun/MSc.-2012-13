@@ -1,0 +1,31 @@
+/* prog20.c: This programme explains fgets.[].
+
+ * Last Modified: 17/11/2012
+ ***/
+/* motivation to learn to use fgets
+ * no alternative**/
+/* outputs as expected: 
+ * simply follows directions**/
+
+#include <stdio.h>
+
+/*constant int length = 100
+ *precedes int main like a CSS rule
+**/
+const int SENTENCE_LENGTH=100;
+
+int main(void)
+{
+/*char defined by variable = 100*/
+	char sentence[SENTENCE_LENGTH];
+	
+	printf("Enter a sentence: ");
+/*fgets replaces scanf and retrieves rule from stdin in stdio.h library*/	
+	fgets(sentence, SENTENCE_LENGTH, stdin);
+	printf("You input: %s\n", sentence);
+	
+	return 0;
+}	
+ 
+/*in scanf (prog20.b), 1 word will print out, but not a sentence
+ *in fgets (prog20.a), either will print out**/
