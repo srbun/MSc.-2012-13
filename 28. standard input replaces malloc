@@ -1,0 +1,29 @@
+/* prog28.c: This programme uses standard input to replace malloc.[].
+
+ * Last Modified: 01/12/2012
+ ***/
+/* motivation to learn to use alternative to malloc
+/* outputs as expected*/
+
+#include <stdio.h>
+#include <stdlib.h>
+//declaring a constant int of small value
+//THIS STAYS THE SAME AS THE ADDRESS LENGTH REMAINS THE SAME
+const int MALLOC_NUM = 50;
+ 
+int main(void)
+{
+//declaring a char pointing to memory / it points to the array worth 50
+//THIS IS DIFFERENT THAN PROG27: MALLOC HAS BEEN REPLACED BY STANDARD CHARS WITH EQUIVALENT POINTER
+	char *memory;
+	char input[50];
+    memory = (char*) input;
+//request input / receive it / print the array location's contents - i.e., the requested input (memory = the contents and addresses)
+//THE MEMORY REMAINS THE SAME - THE ADDRESS IS DIFFERENT EACH TIME
+	printf("Write something, please.\n");
+	fgets(memory, MALLOC_NUM, stdin);	
+    printf("The character array starting from memory location %u contains: %s\n", memory, memory);
+//memory is released
+	free(memory);
+    return 0;
+}
