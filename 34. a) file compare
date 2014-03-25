@@ -1,0 +1,70 @@
+/* prog34.c: This programme opens 2 files to compare and state if identical.[].
+
+ * Last Modified: 13/12/2012
+ ***/
+/* motivation to compare two files
+ * no alternative**/
+/* outputs as expected:
+*/
+
+/* extra libraries included*/
+
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+int main(int argc, char *argv[])
+{
+	FILE *fp1, *fp2;
+	//char input[40], output[40];
+	char ca, cb;
+
+//	printf("Enter first filename:\n");
+//	fgets(fp1, 40, stdin);
+
+//	printf("Enter second filename:\n");
+//	fgets(fp2, 40, stdin);
+
+/*fopen will work ok if fname1 contains a \n 
+	fp1[strlen(input)-1] = '\0';
+	fp2[strlen(output)-1] = '\0';
+*/
+	fp1 = fopen( argv[1], "r" ); /* open for reading */
+	fp2 = fopen( argv[2], "r" ); /* open for reading */
+
+	if ( fp1 == NULL ) /* check does file exist etc */
+	{
+		printf("Cannot open %s for reading. \n", argv[1] );
+		exit(1); /* terminate program */
+	}
+
+		else if ( fp2 == NULL )
+		{
+			printf("Cannot open %s for reading \n", argv[2] );
+			exit(1); /* terminate program */
+		}
+
+		else
+/* both files opened successfully */
+		{
+			ca = getc( fp1 ) ;
+			cb = getc( fp2 ) ;
+
+			while ( ca != EOF && cb != EOF && ca == cb )
+			{
+				ca = getc( fp1 ) ;
+				cb = getc( fp2 ) ;
+			}
+
+			if ( ca == cb )
+				printf("Files are identical. \n");
+
+			else if ( ca != cb )
+				printf("Files differ. \n" );
+
+		fclose ( fp1 );
+		fclose ( fp2 );
+		}
+	return 0;
+}
