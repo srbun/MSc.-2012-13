@@ -1,0 +1,40 @@
+/* prog20a.c: This programme is a comparison for the previous, using one word vs. one sentence.[].
+
+ * Last Modified: 17/11/2012
+ ***/
+/* motivation to see how word vs. sentence works
+ * no alternative**/
+/* outputs not as expected (had none):
+ * second attempt (w/1 word in each) worked, but no more for scanf**/
+
+#include <stdio.h>
+
+/*constant int length = 100
+**/
+
+/*const int line commented out*/
+/*const int SENTENCE_LENGTH=100;*/
+
+int main(void)
+{
+/*char defined by variable = 100*/
+/*char sentence[SENTENCE_LENGTH] changed to [100]*/
+	char sentence[100];
+	
+	printf("Enter a sentence: ");
+/*fgets replaces scanf and retrieves rule from stdin in stdio.h library*/	
+/*here, only fgets line was changed to scanf*/
+	scanf("%99s", sentence);
+	printf("You input: %s\n", sentence);
+	
+	return 0;
+}
+
+/*an error was made:
+ *scanf had %99d
+ *printf had %d\n
+ *this ran: enter a sentence: nuts
+ *You input: 2686576*****/
+ 
+/*in scanf (prog21), 1 word will print out, but not a sentence
+ *in fgets (prog20), either will print out**/
