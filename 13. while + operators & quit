@@ -1,0 +1,83 @@
+#include <stdio.h>
+int main(void)
+
+{
+	int numbers[6];
+	char operator;
+	char q;
+
+/*Opening instruction*/	
+
+	printf("Select an operator: +, -, *, / or q to exit.\n");
+
+/*new while clause -vs. pp11*/	
+	
+	while ((operator = getchar()) !='q')
+{
+	printf("Enter number one:\n");
+	scanf ("%9d", &numbers[0]);
+	printf("Enter number two:\n");
+	scanf ("%9d", &numbers[1]);
+
+	numbers [2] = numbers [0] + numbers [1];
+	numbers [3] = numbers [0] - numbers [1];
+	numbers [4] = numbers [0] * numbers [1];
+	numbers [5] = numbers [0] / numbers [1];
+	
+	if(operator=='+') printf("Sum is: %9d\n", numbers[2]);
+	
+	else if (operator=='-') printf("Sum is: %9d\n", numbers[3]);
+	
+	else if (operator=='*') printf("Sum is: %9d\n", numbers[4]);
+	
+	else if (operator=='/') printf("Sum is: %9d\n", numbers[5]);
+
+/*new operator request to include in loop*/	
+	
+	printf("Select an operator: +, -, *, / or q to exit.\n");
+	
+	operator = getchar();
+}
+	
+	if (operator='q') printf("Ciao!");
+
+	return 0;
+}
+
+
+/* alternative method -18/11/12 (off moodle)
+
+#include <stdio.h>
+
+int main(void)
+{
+   int num1,num2,result;
+   char operator;
+ 
+   do
+   {
+    
+        printf("Please enter a function (+,-,*,/,q) and press enter:\n");
+        operator = getchar();
+    
+       if (operator!='q')
+       {
+            printf ("Please enter a number and press enter:\n");
+            scanf("%9d",&num1);
+            printf ("Please enter a second number and press enter:\n");
+            scanf("%9d",&num2);
+       
+           result = 0;
+           if (operator=='+') result = num1+num2;
+           if (operator=='-') result = num1-num2;
+           if (operator=='*') result = num1*num2;
+           if (operator=='/') result = num1/num2;
+           
+           printf("%d %c %d = %d\n", num1, operator, num2, result);
+           getchar();
+        }
+    } while (operator!='q');
+       
+    return 0;
+}
+*/
