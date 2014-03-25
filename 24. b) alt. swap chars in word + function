@@ -1,0 +1,62 @@
+/* prog24.c: This programme reverses each word in a sentence.[].
+
+ * Last Modified: 20/11/2012
+ ***/
+/* motivation to learn to manipulate arrays in memory
+/* outputs as expected*/
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+void swap_characters_in_word(char *word, int start_of_word);
+
+const int SENTENCE_LENGTH=100;
+
+int main(void)
+{
+	char sentence[SENTENCE_LENGTH], word[30];	  /*char defined as const int + another char = word*/
+	int i, l;																		/*int defined as i=int + l=letter*/
+	int last_letter;
+	int first_letter;
+	char temp;
+	
+	printf("Please, enter a sentence: ");
+	fgets(sentence, SENTENCE_LENGTH, stdin);		/*fgets replaces scanf and retrieves rule from stdin in stdio.h library*/	
+
+		//print out sentence
+			//printf("%s", sentence);	
+		//test function with sentence and 0
+		
+		//print out sentence
+			
+	for (i = 0; i <= strlen(sentence); i = i+1)	/*for here starts i = 0 / i int  <= sentence length / i builds by 1*/
+	{
+
+	l = 0;
+	
+	while ((sentence[i] != ' ') && (sentence[i] != '\n') && (i <= strlen(sentence)))
+		{
+			word[l] = sentence[i];
+			l = l+1;
+			i = i+1;
+		}
+
+//		first_letter = l+1;
+//		last_letter = l-1;		
+	
+	l = l-1;
+
+		printf("%c\n", word[l]);
+	
+	for ( ; l >= 0; l = l-1)							/*reverse order*/
+	{	
+	//		printf("%s", sentence);
+
+		printf("%c", word[l]);
+	}
+	printf(" ");													/*because spaces are not considered in while loop, they need to be added too*/
+
+	}
+	return 0;
+}
