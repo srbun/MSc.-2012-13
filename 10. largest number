@@ -1,0 +1,31 @@
+#include <stdio.h>
+int main(void)
+
+{
+	int numb1; 
+	int numb2; 
+	int numb3;
+	
+	printf("Enter a number: \n");
+	scanf ("%9d", &numb1);
+	
+	printf("Enter a second number: \n");
+	scanf ("%9d", &numb2);
+
+	printf("Enter a third number: \n");
+	scanf ("%9d", &numb3);
+
+	if (numb1 > numb2 && numb1 > numb3)
+	printf("The largest is: %d\n", numb1);
+	else
+	
+	if (numb2 > numb1 && numb2 > numb3)
+	printf("The largest is: %d\n", numb2);
+	else
+	
+	if (numb3 > numb1 && numb3 > numb2)
+	printf("The largest is: %d\n", numb3);
+	
+	return 0;
+	
+}
