@@ -1,0 +1,60 @@
+/* prog31.c: This programme opens a file to use its word as the secret word to guess.[].
+
+ * Last Modified: 05/12/2012
+ ***/
+/* motivation to create secret word within 3 guesses
+ * no alternative**/
+/* outputs as expected: 
+ * [repeated prog18 w/fewer possible attempts at guessing**/
+
+/* extra libraries included*/ 
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+int main(void)
+
+{
+//declare open-file function + 2 chars + 2 ints
+	FILE *fp;
+	char guess[10];
+	char secret[10];
+//	const char SECRET[] = "blah";
+	int count=0;
+	int c=0;
+//file pointer to open-file
+	fp = fopen("secretword.txt", "r");
+	//c = getc(fp);
+//keep looping until end of file
+	while(c!=EOF)
+	{
+		//putchar(c);
+		c=getc(fp);
+		secret[count]=c;
+		count++;
+	}
+//length of secret-word array	
+	secret[count-1]='\0';
+	//printf("%c", c);
+	printf("%s,\n",secret);
+	//c=*secret;
+//previous for-loop but change 2nd element in strcmp	
+for (count = 1; count <= 3 && strcmp(guess, secret) != 0; count = count+1)
+{
+	printf("\nGuess the secret word within three attempts: \n\n");
+	scanf ("%9s", guess);
+	
+	if (strcmp(guess, secret) == 0) 
+{	
+	printf("\nCorrect guess - %s is the secret word.\n", guess);
+}	
+	else
+{
+	printf("\nSorry, %s is not the secret word.\n", guess);
+}
+}
+//close file
+	fclose(fp);	
+	return 0;
+}
