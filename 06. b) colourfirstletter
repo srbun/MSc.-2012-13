@@ -1,0 +1,9 @@
+#include <stdio.h>
+int main(void)
+{
+	char buffer[10];
+	printf("What's your favourite colour?\n");
+	scanf("%9s", buffer );
+	printf("You said:%c\n", buffer[0]);
+	return 0;
+}
