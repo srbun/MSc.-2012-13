@@ -1,0 +1,31 @@
+/* prog17.c: This programme counts a word's characters in for.
+ * Authors: Andrew Cameron (Andrew Lamb + tutor help)
+ * Last Modified: 14/11/2012
+ ***/
+/* motivation to create finite loop
+ * no alternative**/
+/* outputs as expected: 
+ * repeated prog16 w/fewer lines of code**/
+
+#include <stdio.h>
+int main(void)
+
+{
+/*declare the letter-count*/
+
+	char word[20];
+	int count = 0;
+
+	printf("enter a word: \n");
+	scanf ("%19s", &word);
+	
+/*for-loop indicates letter count
+ *intro + body + conclusion**/
+
+for (count = 0; word[count]!= '\0'; count = count+1);
+
+	printf("word = %s\n", word);
+	printf("count = %d\n", count);
+
+	return 0;
+}
