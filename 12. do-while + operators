@@ -1,0 +1,45 @@
+#include <stdio.h>
+int main(void)
+
+{
+	int numbers[6];
+	char operator;
+
+/*Opening instruction*/	
+	
+	printf("Select an operator: +, -, *, /\n");
+
+/*do-while + getchar()*/	
+	
+	do
+{
+	operator = getchar();
+}
+	while (operator=='\n');	
+
+/*entering numbers*/
+	
+	printf("Enter number one:\n");
+	scanf ("%9d", &numbers[0]);
+	printf("Enter number two:\n");
+	scanf ("%9d", &numbers[1]);
+
+/*defining operations*/
+	
+	numbers [2] = numbers [0] + numbers [1];
+	numbers [3] = numbers [0] - numbers [1];
+	numbers [4] = numbers [0] * numbers [1];
+	numbers [5] = numbers [0] / numbers [1];
+	
+/*if-else clause*/	
+	
+	if(operator=='+') printf("Sum is: %9d\n", numbers[2]);
+	
+	else if (operator=='-') printf("Sum is: %9d\n", numbers[3]);
+	
+	else if (operator=='*') printf("Sum is: %9d\n", numbers[4]);
+	
+	else if (operator=='/') printf("Sum is: %9d\n", numbers[5]);
+
+	return 0;
+}
