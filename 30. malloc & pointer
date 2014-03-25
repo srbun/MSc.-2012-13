@@ -1,0 +1,61 @@
+/* prog30.c: This programme uses malloc and pointer.[].
+
+ * Last Modified: 03/01/2012
+ ***/
+/* motivation to understand malloc and pointers
+ * int ptr alternative below**/
+/* outputs [as] expected: 
+*/
+/* extra library included*/ 
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(void)
+{
+//use malloc to allocate 50 chars to array
+	char *word;
+	word = (char*) malloc(50);
+	char *ptr;
+//use ptr (pointer) to isolate specific chars in array
+
+	printf("Please, input a word.\n");
+	fgets (word, 50, stdin);
+//isolate two chars to change
+	ptr = &word[1];
+	ptr[1] = ' ';
+	ptr[3] = '$';	
+	
+	printf("The word is kind of: %s\n", word);
+//release array space for reuse
+	free(word);
+	return 0;
+}
+
+
+
+/*first attempt - it works, but it's wrong.  Yay.
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(void)
+{
+//use malloc to allocate 50 chars to array
+	char *word;
+	word = (char*) malloc(50);
+	int ptr;
+//use ptr (pointer) to isolate specific chars in array
+
+	printf("Please, input a word.\n");
+	fgets (word, 50, stdin);
+//isolate two chars to change
+	ptr = word[1];
+	word[1] = ' ';
+	word[3] = '$';	
+	
+	printf("The word is kind of: %s\n", word);
+//release array space for reuse
+	free(word);
+	return 0;
+}
+*/
