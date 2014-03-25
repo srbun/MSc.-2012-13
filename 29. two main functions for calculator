@@ -1,0 +1,55 @@
+/* prog29.c: This programme uses a 2nd (another) main function for a calculator.[].
+
+ * Last Modified: 02/12/2012
+ ***/
+/* motivation to learn to use a 2nd main function as calculator
+ * no alternative discovered**/
+/* outputs as expected*/
+
+#include <stdio.h>
+
+int main(int argc, char *argv[])
+{
+//	int number[6];
+//	char array[10];
+	char operator;
+	int answer;
+	int number1;
+	int number2;
+//  int i = 1;
+	
+//using sscanf to readin array as int.s	
+	sscanf(argv[1], "%d ", &number1);
+	sscanf(argv[3], "%d ", &number2);
+	printf("number1 %d ", number1);
+	printf("\nnumber2 %d \n", number2);
+	
+//sscanf to readin operator as char	
+	sscanf(argv[2], "%s", &operator);
+	
+	printf("operator %c\n", operator);
+	
+	if(operator =='+') 
+	{	
+		answer = number1 + number2;
+		printf("Sum is: %9d\n", answer);
+	}
+
+	else if (operator=='-') 
+	{	
+		answer = number1 - number2;
+		printf("Sum is: %9d\n", answer);
+	}
+	else if (operator=='x') 
+	{	
+		answer = number1 * number2;
+		printf("Sum is: %9d\n", answer);
+	}
+	else if (operator=='/') 
+	{	
+		answer = number1 / number2;
+		printf("Sum is: %9d\n", answer);
+	}
+
+	return 0;
+}
