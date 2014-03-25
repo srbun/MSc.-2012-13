@@ -1,0 +1,42 @@
+/* prog16.c: This programme counts a word's characters.
+
+ * Last Modified: 14/11/2012
+ ***/
+/* motivation to create finite loop
+ * an alternative (xxxx) = print count**/
+/* outputs not as expected: 
+ * looped 0-255 repeatedly w/in 10,000 times**/
+
+#include <stdio.h>
+int main(void)
+
+{
+/*declare the letter-count*/
+
+	char letter[20];
+	int count = 0;
+
+	printf("enter a word: \n");
+	scanf ("%19s", &letter);
+	
+/*while loop indicates letter count*/
+
+while (letter[count] != '\0')
+{
+/*loop body indicates means to end loop*/
+
+	count = count+1;	
+}	
+	printf("%s\n", letter);
+	printf("%d\n", count);
+
+	return 0;
+}
+
+/*create prog. w/a char variable
+ *treat char variable as byte
+ *initialise variable to have value of 0 (not '0')
+ *create while loop -to loop 10000 times
+ *in loop body, add 1 to char variable; printf new value in variable
+ *run prog., look at output -does final printf output 10000, 9999 or else?  Why?
+ ******/
