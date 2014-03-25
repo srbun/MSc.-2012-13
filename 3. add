@@ -1,0 +1,9 @@
+#include <stdio.h>
+int main(void)
+{
+	int two=3;
+	int one=5;
+	int three=one+two;
+	printf("%d\n", three);
+	return 0;
+}
