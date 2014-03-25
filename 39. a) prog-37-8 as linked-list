@@ -1,0 +1,177 @@
+/* prog39.c: This programme builds on 37/38 to append student info with a linked list.[].
+
+ * Last Modified: 18/12/2012
+ ***/
+/* motivation to enter student info as in a database
+ * no alternative**/
+/* outputs as expected:
+*/
+
+/* extra libraries included*/
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+//prototype struct -info-group
+struct student_info
+ {
+	char* names[100];
+	int phone;
+	int stuID;
+};
+
+struct node {
+	int data;
+	struct student_info* next;
+};
+
+void input_struct(struct student_info *s);
+void read_file(struct student_info *s);
+void write_file(struct student_info *s);
+
+//void read_file_again(struct student_info *s);
+//void write_file_again(struct student_info *s);
+void append(int num, struct node* head)
+{
+    struct node *temp,*right;
+    temp= (struct node *)malloc(sizeof(struct node)); // temp will eventually become the //last node
+    temp->data = num;
+    temp->next = 0; // for those who can use NULL, do so. I must use zero
+    right = (struct node *)head;
+
+// the following while loop will find the last node... ie the last node's next WILL BE 
+// NULL
+    while(right->next != NULL)
+    {  
+       right = right->next;
+    }
+    right->next = temp;  // right is now pointing at last node and what was NULL is now    // temp
+}
+void display(struct node * root)
+{
+    struct node* myRoot = root;
+    
+	if(myRoot == NULL)
+    {
+    return;
+    }
+    while(myRoot != NULL)
+    {
+		printf("%d ", myRoot->data);
+		myRoot = myRoot->next;
+    }
+    printf("\n");
+}
+int main(void)
+{
+	char choice;
+	struct student_info *student;
+	student = (struct student_info*)malloc(sizeof(struct student_info));
+
+	fflush(stdin);
+	
+	printf("Enter 'r' to read a file and 'w' to write into a file.\n");
+	scanf("%c", &choice);
+	
+	if(choice == 'r')
+	{
+		read_file(student);
+	
+	printf("\nWould you like to Read another file? \n");
+	scanf("%c", &choice);
+	
+	if (choice == 'y')
+		read_file(student);
+	
+	else
+		return 1;
+	}
+	else if (choice == 'w')
+	{	
+		input_struct(student);
+		write_file(student);
+	
+		printf("\nWould you like to enter information for second student? \n");
+		scanf("%c", &choice);
+	
+	if (choice == 'y')
+	{
+		input_struct(student);
+		write_file(student);
+	}
+	
+	else 
+		return 1;
+	}
+free(student);
+
+     struct node listRoot;
+     struct node* head = &listRoot;    
+     head->data = 10;
+     head->next = 0;
+/*   append(9,head);
+     append(8,head);
+     append(17,head);
+     append(6,head);
+     display(head);*/
+// I need this getchar() so the cmd window stays open
+//   getchar();
+return 0;
+}
+
+void input_struct(struct student_info *s){
+	printf("Enter your name:\n");
+	scanf ("%s", &s->names);
+	printf("Enter your phone #:\n");
+	scanf ("%20d", &s->phone);
+	printf("Enter your student ID:\n");
+	scanf ("%20d", &s->stuID);
+}
+
+void read_file(struct student_info *s)
+{
+	FILE *fp;
+	char filename[40];
+	char read [100];
+	
+	printf("Enter filename to open for reading:\n");
+	fgets(filename, 40, stdin);
+	filename[strlen(filename)-1] = '\0';
+	fp = fopen(filename, "r");
+	
+	while(fp == NULL)
+	{
+	fgets(filename, 40, stdin);
+	filename[strlen(filename)-1] = '\0';
+	fp = fopen(filename, "r");
+	}
+	while(!feof(fp))
+	{
+	fgets(read, 100, fp);
+	printf("%s", read);
+	}
+}
+
+void write_file(struct student_info *s)
+{
+	FILE *fp;
+	char filename[40];
+	
+	printf("Enter filename to open a file for writing:\n");
+	fgets(filename, 40, stdin);
+	filename[strlen(filename)-1] = '\0';
+	fp = fopen(filename, "w");
+
+	while(fp == NULL)
+	{
+	fgets(filename, 40, stdin);
+	filename[strlen(filename)-1] = '\0';
+	fp = fopen(filename, "w");
+	}
+
+	//printf("value of struc is %s",s->names);
+	fprintf(fp, "%s \n", s->names);
+	fprintf(fp, "%d \n", s->phone);
+	fprintf(fp, "%d \n", s->stuID);
+}
