@@ -1,0 +1,111 @@
+/* prog37.c: This programme uses structures to enter student info.[].
+
+ * Last Modified: 17/12/2012
+ ***/
+/* motivation to enter student info as in a database
+ * no alternative**/
+/* outputs as expected:
+*/
+
+/* extra libraries included*/
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+//prototype struct -info-group
+struct student_info {
+	char* names[100];
+	int phone;
+	int stuID;
+};
+
+//declare functions
+void input_struct(struct student_info *s);
+// void input_struct(int a); [input by tutor]
+void read_file(struct student_info *s);
+void write_file(struct student_info *s);
+int main(void)
+{
+	struct student_info *student;
+	char choice;
+	student = (struct student_info*)malloc(sizeof(struct student_info));
+//calling the input struct	
+	input_struct(student);
+	
+	printf("names %s\n", student->names);
+	printf("phone %20d\n", student->phone);
+	printf("stuid %20d\n", student->stuID);
+	
+//fflush flushes the buffer [applied by tutor]
+	fflush(stdin);
+//request & take user input	
+	printf("Enter 'r' to read a file and 'w' to write into a file.\n");
+	scanf("%c", &choice);
+	
+	if(choice == 'r')
+	{
+		printf("Enter filename to open for reading:" );
+		read_file(student);
+	}
+	else if (choice == 'w')
+	{
+		printf("Enter filename to open a file for writing:\n");
+		write_file(student);
+	}
+	
+return 0;
+}
+
+void input_struct(struct student_info *s){
+	printf("Enter your name:\n");
+	scanf ("%s", &s->names);
+	printf("Enter your phone #:\n");
+	scanf ("%20d", &s->phone);
+	printf("Enter your student ID:\n");
+	scanf ("%10d", &s->stuID);
+}
+
+void read_file(struct student_info *s)
+{
+	FILE *fp;
+	char filename[40];
+	char read [100];
+	fgets(filename, 40, stdin);
+	filename[strlen(filename)-1] = '\0';
+	fp = fopen(filename, "r");
+	
+	while(fp == NULL)
+	{
+		fgets(filename, 40, stdin);
+		filename[strlen(filename)-1] = '\0';
+		fp = fopen(filename, "r");
+	}
+//feof does not take '!=' / it takes only '!' (omit '=' or will not compile)
+	while(!feof(fp))
+	{
+		fgets(read, 100, fp);
+		printf("%s", read);
+	}
+}
+
+void write_file(struct student_info *s)
+{
+	FILE *fp;
+	char filename[40];
+
+	fgets(filename, 40, stdin);
+	filename[strlen(filename)-1] = '\0';
+	fp = fopen(filename, "w");
+
+	while(fp == NULL)
+	{
+		fgets(filename, 40, stdin);
+		filename[strlen(filename)-1] = '\0';
+		fp = fopen(filename, "w");
+	}
+
+	fprintf(fp, "%s \n", s->names);
+	fprintf(fp, "%d \n", s->phone);
+	fprintf(fp, "%d \n", s->stuID);
+}
