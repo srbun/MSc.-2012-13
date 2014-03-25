@@ -1,0 +1,34 @@
+#include <stdio.h>
+
+int main(void)
+
+{
+/*Starting definitions: type + name [+ definition] - type=char; name=word; 10=# of chars; char=c*/
+
+	char word[10];
+	char c;
+	
+	
+/*Enter simple instructions -input/output*/
+
+	printf("enter a word: ");
+	scanf ("%9s", word);	
+	printf("enter any character: ");
+
+/*do-while loop: 'do' what you want while the condition is true*/ 
+
+	do
+{
+
+/*getchar() gets 1 char -parentheses remain empty; 2 of them get 2 chars -1 after another*/
+	c = getchar();
+}		
+	while (c == '\n');
+	
+/*'if' the code is false, print warning mssg*/	
+
+	if (c== '\n') printf("warning: char c contains a newline\n");
+	printf("you entered: word: %s, char: %c\n", word, c);
+	
+	return 0;
+}
