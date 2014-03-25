@@ -1,0 +1,25 @@
+/* prog27.c: This programme uses malloc.[].
+
+ * Last Modified: 01/12/2012
+ ***/
+/* motivation to learn to use malloc
+/* outputs as expected*/
+
+#include <stdio.h>
+#include <stdlib.h>
+//declaring a constant int of small value
+const int MALLOC_NUM = 50;
+ 
+int main(void)
+{
+//declaring a char pointing to memory / it points to the array worth 50
+	char *memory;
+    memory = (char*) malloc(MALLOC_NUM);
+//request input / receive it / print the array location's contents - i.e., the requested input (memory = the contents and addresses)
+	printf("Write something, please.\n");
+	fgets(memory, MALLOC_NUM, stdin);	
+    printf("The character array starting from memory location %u contains: %s\n", memory, memory);
+//memory is released
+	free(memory);
+    return 0;
+}
