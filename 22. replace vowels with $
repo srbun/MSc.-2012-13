@@ -1,0 +1,37 @@
+/* prog22.c: This programme replaces vowels w/$.[].
+
+ * Last Modified: 18/11/2012
+ ***/
+/* motivation to learn to manipulate parts of arrays
+ * alternative included below**/
+/* outputs as expected*/
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+/*constant int length = 100
+**/
+const int SENTENCE_LENGTH=100;
+
+int main(void)
+{
+/*declare the list: char + int*/
+	char sentence[SENTENCE_LENGTH];			/*char defined as const int*/
+	int i;									/*int defined as i=int*/
+	
+	printf("Please, enter a sentence: ");
+	fgets(sentence, SENTENCE_LENGTH, stdin);	/*fgets replaces scanf and retrieves rule from stdin in stdio.h library*/	
+/*loop through sentence to find vowel chars*/	
+	for (i = 0; i <= strlen(sentence); i = i+1)	/*for here starts i = 0 / i int  <= sentence length / i builds by 1*/
+	{
+/*identify each vowel in the phrase and replace it*/
+		if ((sentence[i] == 'a') || (sentence[i] == 'e') || (sentence[i] == 'i')  || (sentence[i] == 'o') || (sentence[i] == 'u') || (sentence[i] == 'y'))
+		
+		sentence[i]= '$';
+	}
+	/*print changed sentence*/	
+		printf("%s\n", sentence);
+		
+	return 0;
+}
