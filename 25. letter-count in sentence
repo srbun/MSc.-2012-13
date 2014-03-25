@@ -1,0 +1,41 @@
+// prog25.c: This programme counts each letter's # in a sentence.[].
+
+// Last Modified: 30/11/2012
+
+// motivation to learn to manipulate arrays
+// alternative unknown - alternatives exist though
+// outputs as expected
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+//same as previous
+const int SENTENCE_LENGTH = 100;
+
+int main(void)
+{
+//char to declare sentence & letters / int to declare counter for sentence & letters & total/sum - use {} for alphabet
+	char sentence[SENTENCE_LENGTH];
+	char letter[27]={'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z','\0'};
+	int counter_l[27] = {0};
+	int counter_s;
+	int i;
+//same as previous
+	printf("Please, enter any number of words.\n\n");
+	fgets(sentence, SENTENCE_LENGTH, stdin);
+//for-loop to count sentence-letters
+	for (counter_s=0; counter_s < strlen(sentence); counter_s++)
+//for-loop -internal- to count alphabet-letters
+		for (i=0; i < 27; i++)
+			{
+//if-statement to compare alphabet-letters (array) with sentence-letters (array) / adds to letter-count
+				if(letter[i] == sentence[counter_s])				
+					counter_l[i]++;
+			}
+//for-loop to count alphabet-letters / & print totals = letters			
+		for (i=0; i<27; i++)
+			printf("%c = %d\n", letter[i], counter_l[i]);
+
+	return 0;
+}
