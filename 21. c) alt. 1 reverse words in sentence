@@ -1,0 +1,27 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+const char SENTENCE_LENGTH = 100;
+int main(void)
+{
+	char sentence[SENTENCE_LENGTH];
+	int i, l;
+	int len;
+	
+	printf("Enter a sentence:\n");
+	fgets (sentence, SENTENCE_LENGTH, stdin);
+	
+	len = strlen(sentence);
+	sentence[len-1]=' ';
+	
+	for(i=0; i<len; i++)
+	{	
+		if(sentence[i]==' ')
+	l = l-1;		
+	}
+	for ( ; l >= 0; l = l-1)					/*reverse order*/
+		printf("%c", sentence[l]);
+	printf(" ");
+return 0;
+}	
