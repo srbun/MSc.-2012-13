@@ -17,7 +17,7 @@ int main(void)
 {
 /*declare the list: char + int*/
 	char sentence[SENTENCE_LENGTH], word[30];	/*char value defined as const int + another char = word*/
-	int i, l;									/*int defined as i=int + l=letter*/
+	int i, l;					/*int defined as i=int + l=letter*/
 	
 	printf("Please, enter a sentence: ");
 	fgets(sentence, SENTENCE_LENGTH, stdin);	/*fgets replaces scanf and retrieves rule from stdin in stdio.h library*/	
