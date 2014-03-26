@@ -1,0 +1,23 @@
+//Prog 01b
+//25/02/2013
+
+//read 2 ints - b) sum squares of all even #s between 1 & N
+
+#include <stdio.h>
+
+int main ()
+{
+int i, m, n, sum = 0;
+//N is replaced by m -capitals = CONSTANT (per demonstrator)
+//have user enter 2 #s
+	printf("Enter two numbers.\n");
+	scanf ("%d%d", &m, &n);
+	printf("You entered %d and %d.\n", m, n);
+//for-loop -start at 2 & + 2- to count only even #s	
+	for(i = 2; i <= m; i = i + 2)
+		sum = sum + i * i;
+//sum is sum (after eacy cycle) + i times itself		
+	printf("The sum is %d.", sum);
+
+return 0;	
+}
