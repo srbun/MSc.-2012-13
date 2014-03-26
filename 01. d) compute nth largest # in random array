@@ -1,0 +1,47 @@
+//Prog 01d 
+//25/02/2013 / 14/03/13
+
+//read 2 ints - d) using random array -length N-
+//compute nth largest # in array
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+int main (void)
+{
+    int *a, i, largest;
+    int N;	
+//create ints for array, length, address
+	printf("Please, type a medium number.\n");
+    scanf("%d", &N);
+	
+    //a = (int *)malloc(N * sizeof(int));
+	
+	int myarray[N];
+	
+    if(a == NULL)
+	{
+        printf("malloc error \n");
+        return -1;
+    }
+//string? random function with time	(from time library)
+    srand(time(NULL));
+//for-loop to populate array	
+    for(i=0; i < N; i++)
+	{
+//random-number modulus 100 -remainder = ?
+        myarray[i] = rand()%100;
+		printf("%d ", myarray[i]);
+	}
+
+	largest = 0;	
+    for(i=0; i < N; i++)
+	{		
+        if(myarray[i] > largest)
+		largest = myarray[i];
+	}
+        printf("\nThe nth largest number is %d\n", largest);
+//    free(a);
+    return 0;
+}
