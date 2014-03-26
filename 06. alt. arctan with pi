@@ -1,0 +1,61 @@
+//Prog 06
+//19/03/2013
+//Andrew Cameron: with B.Ward
+//calculate PI = 3.14159... to 10 decimal places
+//(using: PI = 4 arctan(4arctan(1/5) - arctan(1/239)))
+
+#include <iostream>
+#include <string>
+#include <iomanip>
+#include <cmath>
+using namespace std;
+
+double arctan(double input, double accuracy =.0000000001);
+
+int main()
+{
+
+double PI;
+double a, b;
+
+//formula
+a = 1.0/5.0;
+cout<<"a = " <<a <<endl;
+
+b = 1.0/239.0;
+cout<<"b = " <<b <<endl;
+
+cout<<"arctan 1/5:\t" <<setprecision(20) <<arctan(a) <<endl;
+cout<<"arctan 1/239:\t" <<setprecision(20) <<arctan(b) <<endl;
+
+PI = 4 * (4 * (arctan(a)) - arctan(b));
+//set precision to 10
+cout<<"Pi is equal to : " <<setprecision(10) <<fabs(PI);
+
+return 0;
+}
+//function to calculate arctan
+double arctan(double input, double accuracy)
+{
+double formula;
+double total;
+int j;
+
+total = 0;
+// this increments in steps of 2
+j = 2;
+
+formula = input;
+
+do
+{
+	total = total + formula;
+	formula = -formula * input * input * (2 * j - 3)/(2 * j - 1);//http://en.wikipedia.org/wiki/Inverse_trigonometric_functions
+	cout <<total  <<endl;
+	j++;
+}
+//use fabs to get the absolute value
+while (fabs(formula) > accuracy);
+
+return total;
+}
