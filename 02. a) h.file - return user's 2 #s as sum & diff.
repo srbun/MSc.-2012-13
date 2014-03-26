@@ -1,0 +1,24 @@
+//Prog 02
+//25/02/2013
+
+//take 2 #s from user & return sum & difference (add / subtract)
+
+#include <iostream>
+using namespace std;
+
+main int (void)
+{
+int i, a, b, total;
+
+	cout << "Enter two numbers, please." <<endl;
+	cin  >> a;
+	cin  >> b;
+	
+	int total = (a + b);
+	cout << "The sum of these numbers is ." << total;
+	
+	int total = (a - b);
+	cout << "The difference between these numbers is ." << total;
+		
+return 0;
+}
