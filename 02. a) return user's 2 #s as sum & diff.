@@ -8,7 +8,7 @@ using namespace std;
 
 int main (void)
 {
-int i, a, b, total;
+int a, b, total;
 
 	cout << "Enter two numbers, please." <<endl;
 	cin  >> a;
