@@ -1,0 +1,41 @@
+//Prog 01c
+//25/02/2013 / 14/03/13
+
+//read 2 ints - c) create random array -length N-
+//& get product of all multiples of 5 or 11 in array
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>  
+
+int main (void)
+{
+//create ints for array, length, address
+    int *a, i;
+    int N;
+	
+	printf("Please, type a small number.\n");
+    scanf("%d", &N);
+	
+    a = (int *)malloc(N * sizeof(int));
+    if(a == NULL)
+	{
+        printf("malloc error \n");
+        return -1;
+    }
+//string? random function with time	(from time library)
+    srand(time(NULL));
+	
+    for(i=0; i < N; i++)
+	{
+//random number modulus 100 -remainder = ?
+        a[i] = rand()%100;
+		
+        if(a[i] % 11 == 0 || a[i] % 5 == 0)
+            printf("a[%d] = %d - it is a multiple of 5 or 11.\n", i, a[i]);
+        else
+            printf("a[%d] = %d - it is not a multiple of 5 or 11.\n", i, a[i]);
+    }
+    free(a);
+    return 0;
+}
