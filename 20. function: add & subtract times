@@ -1,0 +1,72 @@
+//Prog 20
+//04/04/2013
+
+//write function add_times -takes 2 variables of type MyTime as input args &
+//outputs a return value which is sum of the 2 times + outputs should be in
+//'canonical form' (0<=t.seconds<60 / 0<=t.minutes<60 / 0<=t.hours
+//function prototype should look like MyTime add_time(MyTime t1, Mytime t2);
+//write analogous subtract_times function
+
+#include <iostream>
+using namespace std;
+
+struct MyTime
+{
+int hours;
+int minutes;
+int seconds;
+};
+//prototype add & subtract functions
+MyTime add_times(MyTime t1, MyTime t2);
+MyTime subtract_times(MyTime t1, MyTime t2);
+
+int main()
+{//declaraton of variables
+MyTime t1, t2;
+//assign
+cout<<"Please, enter one set of hours, minutes & seconds." <<endl;
+cin>> t1.hours >>t1.minutes >>t1.seconds;
+
+cout<<"Please, enter another set of hours, minutes & seconds." <<endl;
+cin>> t2.hours >>t2.minutes >>t2.seconds;
+//call add & subt functions
+add_times(t1, t2);
+subtract_times(t1, t2);
+
+return 0;
+}
+//function for addition
+MyTime add_times(MyTime t1, MyTime t2)
+{
+	MyTime t3;
+	int hr, min;
+
+	t3.seconds = t1.seconds + t2.seconds;
+
+	min = t3.seconds/60;			//this variable is the excess seconds measured in minutes
+	t3.seconds = t3.seconds%60;		// the remainder is the number of seconds
+	t3.minutes = t1.minutes + t2.minutes + min;
+
+	hr = t3.minutes/60;				//this variable is the excess minutes measured in hours
+	t3.minutes = t3.minutes%60;		// the remainder is the number of minutes
+	t3.hours = t1.hours + t2.hours + hr;
+
+//output the result
+	cout<<"The total time is:\t" <<t3.hours <<"hours\t" <<t3.minutes <<" minutes\t" <<t3.seconds <<" seconds" <<endl;
+
+	return t3;
+}
+//function for subtraction
+MyTime subtract_times(MyTime t1, MyTime t2)
+{
+	MyTime t4;
+
+		t4.hours = t1.hours - t2.hours;
+		t4.minutes = t1.minutes - t2.minutes;
+		t4.seconds = t1.seconds - t2.seconds;
+
+//output the result
+	cout<< "The time-difference is:\t" <<t4.hours <<"hours\t" <<t4.minutes <<" minutes\t" <<t4.seconds <<" seconds" <<endl;
+
+	return t4;
+}
