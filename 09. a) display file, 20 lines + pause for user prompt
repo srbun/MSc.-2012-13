@@ -1,0 +1,59 @@
+//Prog 09
+//19/03/2013
+
+//display file 20 lines at once & pause, waiting for user prompt (based on C prog.35)
+
+#include <iostream>
+#include <fstream>
+using namespace std;
+
+const int MAXLENGTH=80;
+const int DISPLAYLENGTH=20;
+
+int main(int argc, char *argv[])
+{
+//declare word-list + quit char + line-counter int
+char listword[MAXLENGTH], quit = '\0';
+char ch;
+int linecount;
+fstream fp; 
+
+  if (argc < 2)
+    {
+      cerr << "Usage: filecopy <infile> <outfile>" << endl;
+      return -1;
+    }
+  fp.open(argv[1], ios::in);
+
+  if (fp.fail())
+    {
+      cerr << "Cannot open the input file." << endl;
+      return -1;
+    }
+
+  quit = false;
+  linecount = 0;
+  while (!(fp.eof() || quit))
+    {
+      // read a line, with maximum length MAXLENGTH
+      // Note that this program does not check if the line is greater than
+      // MAXLENGTH.  We could use the fail() function to check for this
+      // and deal with it
+      fp.getline(listword, MAXLENGTH, '\n'); 
+
+      if (!fp.eof())   
+	      cout<<listword <<endl;
+      else
+	      cout<<listword; // if end of file was reached before the line ended, then don't write out a new line character
+      linecount++;
+		if (linecount % DISPLAYLENGTH==0)
+		{
+	  // wait for keypress before proceeding - pressing Q or q will cause exit
+			while ((ch = cin.get())!='Q' && ch!='q' && ch !='\n');
+			if (ch != '\n')
+			quit = true;
+		}
+    }
+ 	fp.close();
+	return 0;
+}
