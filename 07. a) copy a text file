@@ -1,0 +1,71 @@
+//Prog 07
+//18/03/2013
+
+//copy a text file (based on C prog.32)
+
+#include <iostream>
+#include <fstream>
+using namespace std;
+//create args to open from cmd line
+int main(int argc, char *argv[])
+{
+  
+//declare 2 files -to read + to write / input & output streams
+fstream inputfile;
+fstream outputfile;
+int i;
+char ch;
+
+	if (argc < 3)
+    {
+      cerr <<"Usage: filecopy <infile> <outfile>." <<endl;
+      return -1;
+    }
+//open file to be copied / read only
+	inputfile.open(argv[1], ios::in);
+
+	if (inputfile.fail())
+    {
+      cerr <<"Cannot open the input file." <<endl;
+      return -1;
+    }
+//open destination file for the copy / write only	
+	outputfile.open(argv[2], ios::out);
+
+  if (outputfile.fail())
+    {
+      cerr <<"Cannot open the output file." <<endl;
+      return -1;
+    }
+	//copy file over char by char	
+
+///  for ((ch = fpin.get());!fpin.eof();(ch=fpin.get()))
+//     fpout << ch;
+
+	 for(ch = inputfile.get(); !inputfile.eof(); ch = inputfile.get())
+		outputfile <<ch;
+		
+	if(argv[1] == NULL)
+	{
+		cout<<"Unable to open file to read.\n";
+		return -1;
+	}
+//if file-2 missing
+	else if(argv[2] == NULL)
+	{
+		cout<<"Unable to open file to write.\n";
+		return -1;
+	}
+//if neither file missing -get file-1 content (array)
+
+	while(!inputfile.eof())
+		outputfile.put(ch);
+//verify copy
+		cout<<"Now, check your file.\n";
+		inputfile.open(argv[2], ios::in);
+//close the streams
+inputfile.close();
+outputfile.close();
+
+return 0;
+}
